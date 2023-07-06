@@ -82,13 +82,15 @@ namespace PharmacyApp.ViewModel
 
         public void DiscardCommad(Drug drug)
         {
+            if (drug == null) return;
+            int t = Drugs.IndexOf(drug);
             using (_context = new Context())
             {
-                int t = Drugs.IndexOf(drug);
                 Drug temp = _context.Drugs.Include(d => d.Category).ToList().FirstOrDefault(x => x.Id.Equals(drug.Id));
                 Drugs[t] = temp;
                 SelectedDrug = Drugs[t];
             }
+            SelectedDrug = Drugs[t];
         }
 
         public void SearchCommad(TextBox textBox)

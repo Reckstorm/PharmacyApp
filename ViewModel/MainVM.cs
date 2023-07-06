@@ -34,7 +34,7 @@ namespace PharmacyApp.ViewModel
             {
                 if (drug == null) return;
                 if (drug.Name.Equals(string.Empty) ||
-                    //drug.DrugImgURL.Equals(string.Empty) ||
+                    drug.DrugImgURL.Equals(string.Empty) ||
                     drug.Composition.Equals(string.Empty) ||
                     drug.BriefDescription.Equals(string.Empty) ||
                     drug.Description.Equals(string.Empty)
@@ -48,8 +48,6 @@ namespace PharmacyApp.ViewModel
             SearchCommand = new DelegateCommand<TextBox>(tb =>
             {
                 _model.SearchCommad(tb);
-                RaisePropertyChanged(nameof(Drugs));
-                RaisePropertyChanged(nameof(Categories));
             });
             PickImageCommand = new DelegateCommand(() =>
             {
